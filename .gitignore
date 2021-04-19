@@ -27,4 +27,4 @@ desafio_softaliza-*.tar
 # this depending on your deployment strategy.
 /priv/static/
 
-.docker
+.docker/postgres/data

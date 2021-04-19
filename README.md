@@ -13,10 +13,10 @@ O seu desafio é desenvolver uma API REST em Elixir, utilizando Phoenix, para ge
   - [ ] Os endpoints desenvolvidos devem ser documentados.
 
 #### __Etapas de Desenvolvimento__
-  - [-] Estrutura Base
+  - [ ] Estrutura Base
     - [x] Novo Projeto Phoenix
     - [x] Configuração do Docker
-    - [ ] Configuração do Guardian
+    - [x] Configuração do Guardian
     - [ ] Configuração do Swagger
   - [ ] Usuários (Criar, Visualizar, Editar, Remover)
   - [ ] Eventos (Criar, Visualizar, Editar, Remover)

@@ -1,10 +1,16 @@
-FROM bitwalker/alpine-elixir-phoenix:latest
+FROM hexpm/elixir:1.10.2-erlang-22.2.8-alpine-3.11.3
 
-WORKDIR /app
+RUN apk add inotify-tools unzip tar
+RUN adduser -S --home /home/app  user --uid 1000
+WORKDIR /home/app
 
-COPY mix.exs .
-COPY mix.lock .
+# Cache elixir deps
+USER user
+RUN mix local.hex --force
+RUN mix local.rebar --force
+COPY mix.exs mix.lock ./
+RUN mix deps.get
+RUN mix deps.compile
 
-RUN mkdir assets
 
-CMD mix deps.get && mix phx.server
+CMD ["iex", "-S", "mix", "phx.server"]
