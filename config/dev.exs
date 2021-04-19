@@ -1,5 +1,5 @@
 use Mix.Config
-
+database_url = System.get_env("DATABASE_URL")
 # Configure your database
 config :desafio_softaliza, Ev.Repo,
   url: database_url,
