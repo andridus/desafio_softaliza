@@ -1,8 +1,8 @@
-### DESAFIO SOFTALIZA
+### __DESAFIO SOFTALIZA__
 
 O seu desafio é desenvolver uma API REST em Elixir, utilizando Phoenix, para geração de anais (proceedings) de artigos científicos submetidos a eventos. Além da geração dos anais, a aplicação deve permitir a inclusão, edição, visualização e exclusão de eventos e artigos.
 
-#### Requisitos
+#### __Requisitos__
 
   - [ ] O acesso de escrita deve ser autorizado e a consulta de eventos e anais deve ser aberta. As entradas e saídas devem ser serializadas em JSON.
   - [ ] Os eventos são compostos por: Título e Descrição.
@@ -12,7 +12,7 @@ O seu desafio é desenvolver uma API REST em Elixir, utilizando Phoenix, para ge
     - [ ] Para cada artigo deve ser exibido: o título; as palavras-chave; os autores (o autor que registrou o artigo seguido pelos co-autores em ordem alfabética); e o resumo.
   - [ ] Os endpoints desenvolvidos devem ser documentados.
 
-#### Etapas de Desenvolvimento
+#### __Etapas de Desenvolvimento__
   - [ ] Estrutura Base
     - [ ] Novo Projeto Phoenix
     - [ ] Configuração do Docker
@@ -22,5 +22,5 @@ O seu desafio é desenvolver uma API REST em Elixir, utilizando Phoenix, para ge
   - [ ] Artigos (Criar, Visualizar, Editar, Remover)
   - [ ] Geração dos Anais em PDF
 
-#### Instalação E Execução
+#### __Instalação E Execução__
 
