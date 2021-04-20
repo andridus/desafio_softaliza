@@ -3,10 +3,35 @@ defmodule EvWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    
   end
 
-  scope "/api", EvWeb do
-    pipe_through :api
+  pipeline :auth do
+    plug Guardian.Plug.Pipeline, module: Ev.Guardian, error_handler: Ev.Auth.ErrorHandler
+  end
+  
+  pipeline :authed do
+    plug Guardian.Plug.EnsureAuthenticated
+  end
+
+  scope "/", EvWeb do
+    pipe_through [:api, :auth]
+
+    get "/", IndexController, :index
+  end
+
+  #Rotas API Públicas
+  scope "/v1", EvWeb do
+    pipe_through [:api, :auth]
+
+    get "/", IndexController, :index
+  end
+
+  #Rotas API que necessitam de autenticação
+  scope "/v1", EvWeb do
+    pipe_through [:api, :auth, :authed]
+
+    get "/app", IndexController, :index
   end
 
   # Enables LiveDashboard only for development

@@ -11,6 +11,10 @@ config :desafio_softaliza,
   namespace: Ev,
   ecto_repos: [Ev.Repo]
 
+config :desafio_softaliza, Ev.Guardian,
+       issuer: "ev",
+       secret_key: "pd7SAumZO9Hs+nuxt3l4hCIbkb2lJUB01aGF+kct3nJ9ROqSYXRfW2dY1NAPWZAC"
+
 # Configures the endpoint
 config :desafio_softaliza, EvWeb.Endpoint,
   url: [host: "localhost"],

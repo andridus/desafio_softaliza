@@ -12,6 +12,7 @@ services:
       - '.docker/postgresql:/var/lib/postgresql/data'
   web:
     build: .
+    command: iex -S mix phx.server
     depends_on:
       - db
     environment:
