@@ -11,8 +11,7 @@ defmodule Ev.Guardian do
 
   def resource_from_claims(claims) do
     id = claims["sub"]
-    #resource = Ev.Models.User.get(id)
-    resource = id
+    resource = Ev.Models.User.get(id)
     {:ok,  resource}
   end
   def resource_from_claims(_claims) do

@@ -5,10 +5,10 @@ defmodule Ev.Auth.ErrorHandler do
   
   @impl Guardian.Plug.ErrorHandler
   def auth_error(conn, {type, _reason}, _opts) do
-    body = Jason.encode!%{ message: to_string(type) }
+    body = Jason.encode!%{ status: false, msg: "UNAUTHENTICATED"}
     
     conn
     |> put_resp_content_type("application/json")
-    |> send_resp(401, body)
+    |> send_resp(403, body)
   end
 end

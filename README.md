@@ -18,7 +18,8 @@ O seu desafio é desenvolver uma API REST em Elixir, utilizando Phoenix, para ge
     - [x] Configuração do Docker
     - [x] Configuração do Guardian
     - [x] Configuração do Swagger
-  - [ ] Usuários (Criar, Visualizar, Editar, Remover)
+  - [x] Login, Signup (Criação de novo Usuário )
+  - [x] Usuários (Criar, Visualizar, Editar, Remover)
   - [ ] Eventos (Criar, Visualizar, Editar, Remover)
   - [ ] Artigos (Criar, Visualizar, Editar, Remover)
   - [ ] Geração dos Anais em PDF
@@ -29,5 +30,5 @@ O seu desafio é desenvolver uma API REST em Elixir, utilizando Phoenix, para ge
   
 ### Testes 
 
-  - Navegue até [locahost:8080/swagger](locahost:8080/swagger)  para observar a documentação das rotas
+  - Navegue até [locahost:8080/swagger](http://locahost:8080/swagger)  para observar a documentação das rotas
 
