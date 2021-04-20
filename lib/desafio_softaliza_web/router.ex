@@ -51,6 +51,7 @@ defmodule EvWeb.Router do
   scope "/v1/events", EvWeb do
     pipe_through [:api, :auth]
 
+    get "/:id/proceedings", EventsController, :proceedings
     get "/:id", EventsController, :one
     get "/", EventsController, :all
   end
@@ -95,7 +96,6 @@ defmodule EvWeb.Router do
       produces: ["application/json"],
       tags: [
         %{name: "Users", description: "Recursos de Usuários"},
-        %{name: "Proceedings", description: "Recursos de Anais"},
         %{name: "Events", description: "Recursos de Eventos"},
         %{name: "Articles", description: "Recursos de Artigos"},
         %{name: "Session", description: "Autorização de Usuários e Verificações"},

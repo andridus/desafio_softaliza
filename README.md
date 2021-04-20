@@ -22,7 +22,8 @@ O seu desafio é desenvolver uma API REST em Elixir, utilizando Phoenix, para ge
   - [x] Usuários (Criar, Visualizar, Editar, Remover)
   - [x] Eventos (Criar, Visualizar, Editar, Remover)
       - os Endpoints GET / e GET /:id não precisam de autenticação 
-  - [ ] Artigos (Criar, Visualizar, Editar, Remover)
+      - o Endpoint GET /:id/proceedings Lista os artigos por evento
+  - [x] Artigos (Criar, Visualizar, Editar, Remover)
   - [ ] Geração dos Anais em PDF
 
 ### Instalação E Execução

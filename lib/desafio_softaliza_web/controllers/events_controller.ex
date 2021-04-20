@@ -89,6 +89,38 @@ defmodule EvWeb.EventsController do
 
   # Obtem as informações de um evento 
   ### DEFINICAO DO SWAGGER ###
+  swagger_path :proceedings do
+    get "/v1/events/{event_id}/proceedings"
+    summary "Obtém os anais de um evento"
+    description "Obtém os anais de um evento existente no banco de dados."
+    produces "application/json"
+    tag "Events"
+    operation_id "proceedings_event"
+    security [%{Bearer: []}]
+    parameters do
+      event_id :path, :string, "ID do Evento", required: true
+    end
+    response 200, "OK", Schema.ref(:Event)
+    response 404, "NOT-FOUND"
+    response 403, "FORBIDDEN"
+  end
+  ### DEFINICAO DA ROTA ###
+  def proceedings(conn, %{"id"=>id}) do
+    Event.get(id)
+    |> case do
+      nil ->
+        conn
+        |> put_status(404)
+        |> json %{success: false, msg: "NOT-FOUND" }
+      e ->
+        proceedings = Event.proceedings(e)
+        conn
+        |> json proceedings
+    end
+  end
+
+  # Obtem as informações de um evento 
+  ### DEFINICAO DO SWAGGER ###
   swagger_path :one do
     get "/v1/events/{event_id}"
     summary "Obtém um evento"

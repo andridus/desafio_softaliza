@@ -61,7 +61,7 @@ defmodule EvWeb.ArticlesController do
   # Atualiza um artigo existente
   ### DEFINICAO DO SWAGGER ###
   swagger_path :update do
-    put "/v1/article/{event_id}"
+    put "/v1/article/{article_id}"
     summary "Atualiza um artigo"
     description "Atualiza um artigo existente no banco de dados."
     produces "application/json"
@@ -69,7 +69,7 @@ defmodule EvWeb.ArticlesController do
     operation_id "update_article"
     security [%{Bearer: []}]
     parameters do
-      event_id :path, :string, "ID do Artigo", required: true
+      article_id :path, :string, "ID do Artigo", required: true
       data :body, (Schema.new do
           properties do
             title :string, "Título do Artigo"
@@ -82,11 +82,17 @@ defmodule EvWeb.ArticlesController do
     response 200, "OK", Schema.ref(:Article)
     response 404, "NOT-FOUND"
     response 403, "FORBIDDEN"
+    response 400, "ERRORS"
   end
   ### DEFINICAO DA ROTA ###
-  def update(conn, %{"id" => id} = data) do
+  def update(conn, data) do
+    id = data["id"]
     Article.update(id, data)
     |> case do
+      nil ->
+        conn
+        |> put_status(404)
+        |> json(%{sucess: false, msg: "NOT-FOUND"})
       {:ok, event} ->
         conn
         |> json(Article.json(event))

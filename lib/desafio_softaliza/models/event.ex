@@ -37,9 +37,9 @@ defmodule Ev.Models.Event do
       if Ecto.assoc_loaded?(data.articles) do
         Enum.map(data.articles, &Ev.Models.Article.json/1)
       else
-        nil
+        []
       end
-    Map.merge(event, %{creator: creator})
+    Map.merge(event, %{creator: creator, articles: articles})
   end
 
   # Obtem o evento pelo Id
@@ -90,4 +90,25 @@ defmodule Ev.Models.Event do
         Repo.delete(e)
     end
   end
+
+  # Devolve os anais de um evento
+  def proceedings(e) do
+    articles = (from a in Ev.Models.Article, preload: [:author])
+    Repo.preload(e, [articles: articles])
+    |> sort_asc_coauthors_articles
+    |> json()
+  end
+
+  def sort_asc_coauthors_articles(e) do
+    
+    articles = 
+      e.articles
+      |> Enum.map( fn 
+        %Ev.Models.Article{ coauthors: c } = x when not is_nil(c) -> Map.merge(x, %{coauthors: Enum.sort(c, :asc)})
+        x -> x
+      end)
+
+    Map.merge(e, %{articles: articles})
+  end
+  
 end
