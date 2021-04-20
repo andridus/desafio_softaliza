@@ -29,5 +29,5 @@ O seu desafio é desenvolver uma API REST em Elixir, utilizando Phoenix, para ge
   
 ### Testes 
 
-  - Navegue até [locahost:8080/swagger]locahost:8080/swagger para observar a documentação das rotas
+  - Navegue até [locahost:8080/swagger](locahost:8080/swagger)  para observar a documentação das rotas
 
