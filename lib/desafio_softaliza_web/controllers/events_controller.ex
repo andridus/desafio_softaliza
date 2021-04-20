@@ -115,7 +115,7 @@ defmodule EvWeb.EventsController do
         pdf_content = Event.proceedings(e)
         conn
         |> put_resp_content_type("application/pdf")
-        |> put_resp_header("content-disposition", "attachment; filename=\"EVENT-PROCEEEDINGS.pdf\"")
+        |> put_resp_header("content-disposition", "attachment; filename=\"EVENTO-#{e.id}-ANAIS.pdf\"")
         |> send_resp(200, pdf_content)
     end
   end

@@ -30,10 +30,12 @@ O seu desafio é desenvolver uma API REST em Elixir, utilizando Phoenix, para ge
 ### Instalação E Execução
 
   1. Rode o comando `docker-compose up`
+  2. Rode o comando em um terminal paralelo `docker-compose exec web mix ecto.setup` para instalar as migrações e pronto
+  3. Acesse o [locahost:4000/](http://locahost:4000/)
 
 ### Testes 
 
-  - Navegue até [locahost:8080/](http://locahost:8080/)  para observar a documentação das rotas através do Swagger
+  - Navegue até [locahost:4000/](http://locahost:4000/)  para observar a documentação das rotas através do Swagger
   - Pelo swagger faça login com um dos usuários abaixo para inserir novos artigos ou eventos:
       - alberto@email.com / 123456
       - maria@email.com / 123456

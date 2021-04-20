@@ -12,6 +12,4 @@ RUN mix local.rebar --force
 COPY mix.exs mix.lock ./
 RUN mix deps.get
 RUN mix deps.compile
-
-
 CMD ["iex", "-S", "mix", "phx.server"]
