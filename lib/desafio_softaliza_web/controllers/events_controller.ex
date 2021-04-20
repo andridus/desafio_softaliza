@@ -69,7 +69,7 @@ defmodule EvWeb.EventsController do
           end
         end), "Atributos do Evento", required: true
     end
-    response 200, "OK", Schema.ref(:Event)
+    response 200, "OK"
     response 404, "NOT-FOUND"
     response 403, "FORBIDDEN"
   end
@@ -96,7 +96,6 @@ defmodule EvWeb.EventsController do
     produces "application/json"
     tag "Events"
     operation_id "proceedings_event"
-    security [%{Bearer: []}]
     parameters do
       event_id :path, :string, "ID do Evento", required: true
     end
@@ -113,9 +112,11 @@ defmodule EvWeb.EventsController do
         |> put_status(404)
         |> json %{success: false, msg: "NOT-FOUND" }
       e ->
-        proceedings = Event.proceedings(e)
+        pdf_content = Event.proceedings(e)
         conn
-        |> json proceedings
+        |> put_resp_content_type("application/pdf")
+        |> put_resp_header("content-disposition", "attachment; filename=\"EVENT-PROCEEEDINGS.pdf\"")
+        |> send_resp(200, pdf_content)
     end
   end
 
@@ -128,7 +129,6 @@ defmodule EvWeb.EventsController do
     produces "application/json"
     tag "Events"
     operation_id "one_event"
-    security [%{Bearer: []}]
     parameters do
       event_id :path, :string, "ID do Evento", required: true
     end
@@ -159,7 +159,6 @@ defmodule EvWeb.EventsController do
     produces "application/json"
     tag "Events"
     operation_id "all_events"
-    security [%{Bearer: []}]
     response 200, "OK", Schema.ref(:Events)
     response 401, "UNAUTHENTICATED"
   end

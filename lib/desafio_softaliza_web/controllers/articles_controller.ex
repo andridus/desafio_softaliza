@@ -112,7 +112,6 @@ defmodule EvWeb.ArticlesController do
     produces "application/json"
     tag "Articles"
     operation_id "one_article"
-    security [%{Bearer: []}]
     parameters do
       article_id :path, :string, "ID do Artigo", required: true
     end
@@ -143,7 +142,6 @@ defmodule EvWeb.ArticlesController do
     produces "application/json"
     tag "Articles"
     operation_id "all_articles"
-    security [%{Bearer: []}]
     response 200, "OK", Schema.ref(:Article)
     response 401, "UNAUTHENTICATED"
   end

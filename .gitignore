@@ -29,3 +29,4 @@ desafio_softaliza-*.tar
 
 .docker/postgres/data
 .hex
+.cache

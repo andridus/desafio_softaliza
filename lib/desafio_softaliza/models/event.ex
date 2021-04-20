@@ -96,19 +96,30 @@ defmodule Ev.Models.Event do
     articles = (from a in Ev.Models.Article, preload: [:author])
     Repo.preload(e, [articles: articles])
     |> sort_asc_coauthors_articles
-    |> json()
+    |> gen_proceedings_pdf
   end
 
   def sort_asc_coauthors_articles(e) do
     
     articles = 
       e.articles
+      |> Enum.sort_by(&(&1.title), :asc)
       |> Enum.map( fn 
         %Ev.Models.Article{ coauthors: c } = x when not is_nil(c) -> Map.merge(x, %{coauthors: Enum.sort(c, :asc)})
         x -> x
       end)
-
     Map.merge(e, %{articles: articles})
+    
   end
+
+  def gen_proceedings_pdf(event) do
+    html = Utils.ProceedingTemplate.render(event)
+    (PdfGenerator.generate_binary html)
+    |> case do
+      {:ok, bin} -> bin
+      e -> false
+    end
+  end
+
   
 end

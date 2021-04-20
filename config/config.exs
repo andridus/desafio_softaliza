@@ -26,6 +26,11 @@ config :desafio_softaliza, :phoenix_swagger,
     ]
   }
 
+# Configura o PDF Generator
+config :pdf_generator,
+    wkhtml_path:  "/usr/bin/wkhtmltopdf"
+  #  command_prefix: "/usr/bin/xvfb-run"
+
 # Configura o Swagger para rodar em localhost
 config :desafio_softaliza, EvApp.Web.Endpoint,
   url: [host: "localhost"] # "host": "localhost:4000" in generated swagger

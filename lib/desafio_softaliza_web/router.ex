@@ -18,7 +18,6 @@ defmodule EvWeb.Router do
   scope "/v1", EvWeb do
     pipe_through [:api, :auth]
 
-    get "/", SessionController, :test
     post "/login", SessionController, :login
     post "/signup", SessionController, :signup
   end

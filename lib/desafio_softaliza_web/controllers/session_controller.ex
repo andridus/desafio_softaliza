@@ -4,38 +4,6 @@ defmodule EvWeb.SessionController do
 
 
   alias Ev.Models.{ User }
-  # Rota de teste para usuário público
-  swagger_path :test do
-    get "/"
-    summary "Rota de Verificação"
-    description "Rota de Verificação que apresenta a data e hora local."
-    produces "application/json"
-    tag "Session"
-    operation_id "show_test"
-    response 200, "OK", %{success: true,  datetime: "2021-04-20T00:35:10.163600" }
-  end
-  def test(conn, _params) do
-    conn
-    |> json %{success: true,  datetime: NaiveDateTime.utc_now}
-  end
-
-
-  # Rota de teste para usuário autenticado
-  swagger_path :authed do
-    get "/v1"
-    summary "Rota de Verificação - Autenticada"
-    description "Rota de Verificação somente para usuários autenticados."
-    produces "application/json"
-    tag "Session"
-    operation_id "show_auth_test"
-    response 200, "OK", %{success: true,  datetime: "2021-04-20T00:35:10.163600" }
-    response 403, "FORBIDDEN"
-  end
-  def authed(conn, _params) do
-    conn
-    |> json %{success: true, datetime: NaiveDateTime.utc_now}
-  end
-
 
   # Rota para efetuar o login
   swagger_path :login do

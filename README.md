@@ -25,7 +25,7 @@ O seu desafio é desenvolver uma API REST em Elixir, utilizando Phoenix, para ge
       - o Endpoint `GET /:id/proceedings` Lista os artigos por evento
   - [x] Artigos (Criar, Visualizar, Editar, Remover)
   - [x] Dados de Exemplo
-  - [ ] Geração dos Anais em PDF
+  - [x] Geração dos Anais em PDF
 
 ### Instalação E Execução
 

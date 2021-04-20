@@ -46,7 +46,8 @@ defmodule Ev.MixProject do
 
       {:guardian, "~> 2.0"},
       {:phoenix_swagger, "~> 0.8"},
-      {:ex_json_schema, "~> 0.5"}
+      {:ex_json_schema, "~> 0.5"},
+      {:pdf_generator, ">=0.6.0" }
     ]
   end
 
