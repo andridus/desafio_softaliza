@@ -11,9 +11,27 @@ config :desafio_softaliza,
   namespace: Ev,
   ecto_repos: [Ev.Repo]
 
+# Configura o Guardian - Lib para autenticação de usuário
 config :desafio_softaliza, Ev.Guardian,
        issuer: "ev",
        secret_key: "pd7SAumZO9Hs+nuxt3l4hCIbkb2lJUB01aGF+kct3nJ9ROqSYXRfW2dY1NAPWZAC"
+
+
+       # Configura o Swagger - Lib que gera a documentação api
+config :desafio_softaliza, :phoenix_swagger,
+  swagger_files: %{
+    "priv/static/swagger.json" => [
+      router: EvWeb.Router,     # Rotas do phoenix são converitdos em caminho swagger.
+      endpoint: EvWeb.Endpoint  
+    ]
+  }
+
+# Configura o Swagger para rodar em localhost
+config :desafio_softaliza, EvApp.Web.Endpoint,
+  url: [host: "localhost"] # "host": "localhost:4000" in generated swagger
+
+# Configura o Swagger para usar o Jason
+config :phoenix_swagger, json_library: Jason
 
 # Configures the endpoint
 config :desafio_softaliza, EvWeb.Endpoint,

@@ -34,6 +34,42 @@ defmodule EvWeb.Router do
     get "/app", IndexController, :index
   end
 
+  # Rotas do UI do Swagger
+  def swagger_info do
+    %{
+      schemes: ["http", "https", "ws", "wss"],
+      info: %{
+        version: "1.0",
+        title: "Desafio Softaliza",
+        description: "Documentação da API do Desafio Softaliza v1",
+        termsOfService: "Aberto",
+        contact: %{
+          name: "Helder de Sousa",
+          email: "helderhenri@gmail.com"
+        }
+      },
+      securityDefinitions: %{
+        Bearer: %{
+          type: "token",
+          name: "Authorization",
+          description: "O token para acesso à API deve ser inserido no Header da requisição `Authorization: Bearer {token} ` ",
+          in: "header"
+        }
+      },
+      consumes: ["application/json"],
+      produces: ["application/json"],
+      tags: [
+        %{name: "Users", description: "Recursos de Usuários"},
+        %{name: "Proceedings", description: "Recursos de Anais"},
+        %{name: "Events", description: "Recursos de Eventos"},
+        %{name: "Articles", description: "Recursos de Artigos"},
+      ]
+    }
+  end
+  scope "/swagger" do
+    forward "/", PhoenixSwagger.Plug.SwaggerUI, otp_app: :desafio_softaliza, swagger_file: "swagger.json"
+  end
+
   # Enables LiveDashboard only for development
   #
   # If you want to use the LiveDashboard in production, you should put

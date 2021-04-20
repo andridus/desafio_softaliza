@@ -23,8 +23,8 @@ services:
     ports:
       - '4000:4000'
     volumes:
-      - /home/app/deps
-      - /home/app/_build
+    #  - /home/app/deps
+   #   - /home/app/_build
       - /home/app/.mix
       - .:/home/app
 volumes:
