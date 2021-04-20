@@ -12,7 +12,8 @@ defmodule Ev.Models.User do
 
     timestamps()
 
-    has_many :events, Ev.Models.Event, foreign_key: :creator_id    
+    has_many :events, Ev.Models.Event, foreign_key: :creator_id
+    has_many :articles, Ev.Models.Article, foreign_key: :author_id  
   end
 
   @doc false
@@ -61,6 +62,7 @@ defmodule Ev.Models.User do
   end
 
   # Obtem o usuário pelo Id
+  def get(nil), do: nil
   def get(id) do
     __MODULE__
     |> Repo.get(id)

@@ -11,7 +11,8 @@ defmodule Ev.Models.Event do
 
     timestamps()
 
-    belongs_to :creator, Ev.Models.User, foreign_key: :creator_id    
+    belongs_to :creator, Ev.Models.User, foreign_key: :creator_id
+    has_many :articles, Ev.Models.Article, foreign_key: :event_id  
   end
 
   @doc false
@@ -24,19 +25,27 @@ defmodule Ev.Models.Event do
   # Retorna o JSON do evento
   def json(nil), do: nil
   def json(data) do
-    u = Map.take(data, [:id, :title, :description])
+    event = Map.take(data, [:id, :title, :description])
     creator = 
       if Ecto.assoc_loaded?(data.creator) do
         Ev.Models.User.json(data.creator)
       else
         nil
       end
-    Map.merge(u, %{creator: creator})
+
+    articles = 
+      if Ecto.assoc_loaded?(data.articles) do
+        Enum.map(data.articles, &Ev.Models.Article.json/1)
+      else
+        nil
+      end
+    Map.merge(event, %{creator: creator})
   end
 
   # Obtem o evento pelo Id
+  def get(nil), do: nil
   def get(id) do
-    (from e in __MODULE__, preload: [:creator] )
+    (from e in __MODULE__, where: e.id == ^id, preload: [:creator] )
     |> Repo.one()
   end
   

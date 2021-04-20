@@ -87,12 +87,12 @@ defmodule EvWeb.EventsController do
     end
   end
 
-  # Obtem as informações de um usuário 
+  # Obtem as informações de um evento 
   ### DEFINICAO DO SWAGGER ###
   swagger_path :one do
     get "/v1/events/{event_id}"
-    summary "Obtém um usuário"
-    description "Obtém um usuário existente no banco de dados."
+    summary "Obtém um evento"
+    description "Obtém um evento existente no banco de dados."
     produces "application/json"
     tag "Events"
     operation_id "one_event"

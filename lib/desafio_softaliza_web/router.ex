@@ -55,6 +55,20 @@ defmodule EvWeb.Router do
     get "/", EventsController, :all
   end
 
+  scope "/v1/articles", EvWeb do
+    pipe_through [:api, :auth, :authed]
+
+    post "/", ArticlesController, :create
+    put "/:id", ArticlesController, :update
+    delete "/:id", ArticlesController, :remove
+  end
+  scope "/v1/articles", EvWeb do
+    pipe_through [:api, :auth]
+
+    get "/:id", ArticlesController, :one
+    get "/", ArticlesController, :all
+  end
+
   # Rotas do UI do Swagger
   def swagger_info do
     %{
