@@ -11,6 +11,8 @@ defmodule Ev.Models.User do
     field :password, :string
 
     timestamps()
+
+    has_many :events, Ev.Models.Event, foreign_key: :creator_id    
   end
 
   @doc false
@@ -40,7 +42,16 @@ defmodule Ev.Models.User do
   # Retorna o JSON do Usuário
   def json(nil), do: nil
   def json(data) do
-    Map.take(data, [:id, :name, :email])
+    u = Map.take(data, [:id, :name, :email])
+
+    # Retorna os eventos criados pelo usuário, se feito o preload
+    events = 
+      if Ecto.assoc_loaded?(data.events) do
+        Enum.map data.events, &Ev.Models.Event.json/1
+      else
+        []
+      end
+    Map.merge(u, %{events: events})
   end
 
   # Obtem o usuário pelo Id

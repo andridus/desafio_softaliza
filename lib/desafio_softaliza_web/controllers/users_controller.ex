@@ -45,8 +45,8 @@ defmodule EvWeb.UsersController do
   # Atualiza um usuário existente
   ### DEFINICAO DO SWAGGER ###
   swagger_path :update do
-    put "/v1/users/{user_id}"
-    summary "Atualiza um usuário"
+    put "/v1/events/{event_id}"
+    summary "Atualiza um"
     description "Atualiza um usuário existente no banco de dados."
     produces "application/json"
     tag "Users"
@@ -102,7 +102,7 @@ defmodule EvWeb.UsersController do
       nil ->
         conn
         |> put_status(404)
-        |> json "NOT-FOUND"
+        |> json %{success: false, msg: "NOT-FOUND" }
       u ->
         conn
         |> json(User.json(u))
@@ -161,7 +161,7 @@ defmodule EvWeb.UsersController do
       nil ->
         conn
         |> put_status(404)
-        |> json "NOT-FOUND"
+        |> json %{success: false, msg: "NOT-FOUND"}
       {:ok, u} ->
         conn
         |> json %{success: true, user: User.json(u)}
@@ -183,10 +183,10 @@ defmodule EvWeb.UsersController do
         properties do
           name :string, "Nome", required: true
           email :string, "E-mail", required: true
-          id :string, "Identificado Único"
+          id :integer, "Identificado Único"
         end
         example %{
-          id: "123",
+          id: 123,
           name: "Fulano de Tal",
           email: "fulano@mail.com"
         }

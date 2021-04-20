@@ -20,7 +20,8 @@ O seu desafio é desenvolver uma API REST em Elixir, utilizando Phoenix, para ge
     - [x] Configuração do Swagger
   - [x] Login, Signup (Criação de novo Usuário )
   - [x] Usuários (Criar, Visualizar, Editar, Remover)
-  - [ ] Eventos (Criar, Visualizar, Editar, Remover)
+  - [x] Eventos (Criar, Visualizar, Editar, Remover)
+      - os Endpoints GET / e GET /:id não precisam de autenticação 
   - [ ] Artigos (Criar, Visualizar, Editar, Remover)
   - [ ] Geração dos Anais em PDF
 
