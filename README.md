@@ -21,16 +21,23 @@ O seu desafio é desenvolver uma API REST em Elixir, utilizando Phoenix, para ge
   - [x] Login, Signup (Criação de novo Usuário )
   - [x] Usuários (Criar, Visualizar, Editar, Remover)
   - [x] Eventos (Criar, Visualizar, Editar, Remover)
-      - os Endpoints GET / e GET /:id não precisam de autenticação 
-      - o Endpoint GET /:id/proceedings Lista os artigos por evento
+      - os Endpoints `GET /` e `GET /:id` não precisam de autenticação 
+      - o Endpoint `GET /:id/proceedings` Lista os artigos por evento
   - [x] Artigos (Criar, Visualizar, Editar, Remover)
+  - [x] Dados de Exemplo
   - [ ] Geração dos Anais em PDF
 
 ### Instalação E Execução
 
   1. Rode o comando `docker-compose up`
-  
+
 ### Testes 
 
-  - Navegue até [locahost:8080/swagger](http://locahost:8080/swagger)  para observar a documentação das rotas
+  - Navegue até [locahost:8080/](http://locahost:8080/)  para observar a documentação das rotas através do Swagger
+  - Pelo swagger faça login com um dos usuários abaixo para inserir novos artigos ou eventos:
+      - alberto@email.com / 123456
+      - maria@email.com / 123456
+      - jose@email.com / 123456
+  - Para acessar os anais ou obter uma lista de artigos ou eventos cadastrados não precisa do login.
+  - As rotas estão documentadas no swagger
 
