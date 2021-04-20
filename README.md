@@ -13,15 +13,21 @@ O seu desafio é desenvolver uma API REST em Elixir, utilizando Phoenix, para ge
   - [ ] Os endpoints desenvolvidos devem ser documentados.
 
 #### __Etapas de Desenvolvimento__
-  - [ ] Estrutura Base
+  - [x] Estrutura Base
     - [x] Novo Projeto Phoenix
     - [x] Configuração do Docker
     - [x] Configuração do Guardian
-    - [ ] Configuração do Swagger
+    - [x] Configuração do Swagger
   - [ ] Usuários (Criar, Visualizar, Editar, Remover)
   - [ ] Eventos (Criar, Visualizar, Editar, Remover)
   - [ ] Artigos (Criar, Visualizar, Editar, Remover)
   - [ ] Geração dos Anais em PDF
 
 #### __Instalação E Execução__
+
+  1. Rode o comando `docker-compose up`
+  
+### Testes 
+
+  - Navegue até [locahost:8080/swagger]locahost:8080/swagger para observar a documentação das rotas
 
