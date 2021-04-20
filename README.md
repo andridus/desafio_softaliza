@@ -4,13 +4,13 @@ O seu desafio é desenvolver uma API REST em Elixir, utilizando Phoenix, para ge
 
 ### Requisitos
 
-  - [ ] O acesso de escrita deve ser autorizado e a consulta de eventos e anais deve ser aberta. As entradas e saídas devem ser serializadas em JSON.
-  - [ ] Os eventos são compostos por: Título e Descrição.
-  - [ ] Os artigos devem possuir relação com um evento e um usuário (autor do artigo), e são compostos por: Título, Resumo, Palavras-chave, Autor (usuário autenticado) e Co-autores.
-  - [ ] A geração dos anais do evento deve ser viabilizada através de um endpoint do evento, que ao ser requisitado retorna um arquivo em PDF, com todos artigos já registrados para aquele evento (para esse desafio, consideramos que todos artigos são aceitos para publicação nos anais).
-    - [ ] O PDF com todos artigos deve conter um cabeçalho simples contendo o título do evento, seguido pelos artigos, dispostos em ordem alfabética. 
-    - [ ] Para cada artigo deve ser exibido: o título; as palavras-chave; os autores (o autor que registrou o artigo seguido pelos co-autores em ordem alfabética); e o resumo.
-  - [ ] Os endpoints desenvolvidos devem ser documentados.
+  - [x] O acesso de escrita deve ser autorizado e a consulta de eventos e anais deve ser aberta. As entradas e saídas devem ser serializadas em JSON.
+  - [x] Os eventos são compostos por: Título e Descrição.
+  - [x] Os artigos devem possuir relação com um evento e um usuário (autor do artigo), e são compostos por: Título, Resumo, Palavras-chave, Autor (usuário autenticado) e Co-autores.
+  - [x] A geração dos anais do evento deve ser viabilizada através de um endpoint do evento, que ao ser requisitado retorna um arquivo em PDF, com todos artigos já registrados para aquele evento (para esse desafio, consideramos que todos artigos são aceitos para publicação nos anais).
+    - [x] O PDF com todos artigos deve conter um cabeçalho simples contendo o título do evento, seguido pelos artigos, dispostos em ordem alfabética. 
+    - [x] Para cada artigo deve ser exibido: o título; as palavras-chave; os autores (o autor que registrou o artigo seguido pelos co-autores em ordem alfabética); e o resumo.
+  - [x] Os endpoints desenvolvidos devem ser documentados.
 
 ### Etapas de Desenvolvimento
   - [x] Estrutura Base
@@ -30,12 +30,12 @@ O seu desafio é desenvolver uma API REST em Elixir, utilizando Phoenix, para ge
 ### Instalação E Execução
 
   1. Rode o comando `docker-compose up`
-  2. Rode o comando em um terminal paralelo `docker-compose exec web mix ecto.setup` para instalar as migrações e pronto
-  3. Acesse o [locahost:4000/](http://locahost:4000/)
+  2. Rode o comando em um terminal paralelo `docker-compose exec web mix ecto.setup` para instalar as migrações
+  3. Acesse o [localhost:4000/](http://localhost:4000/)
 
 ### Testes 
 
-  - Navegue até [locahost:4000/](http://locahost:4000/)  para observar a documentação das rotas através do Swagger
+  - Navegue até [localhost:4000/](http://localhost:4000/)  para observar a documentação das rotas através do Swagger
   - Pelo swagger faça login com um dos usuários abaixo para inserir novos artigos ou eventos:
       - alberto@email.com / 123456
       - maria@email.com / 123456
